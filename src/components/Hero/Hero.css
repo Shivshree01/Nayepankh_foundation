@@ -1,0 +1,569 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap");
+
+/* ======================================================
+   ROOT TOKENS — FOREST EDITORIAL PALETTE
+====================================================== */
+
+.hero {
+  --ink: #1B4332;        /* was #0a0a0a  -> Text */
+  --paper: #F8F9FA;      /* was #f2efe6  -> Background */
+  --alert: #2D6A4F;      /* was #ff3300  -> Primary (loudest accent role) */
+  --warn: #F4A261;       /* was #ffcc00  -> Accent (highlight/badge role) */
+  --surface: #FFFFFF;    /* new -> Surface */
+  --secondary: #40916C;  /* new -> Secondary (hover/lift state) */
+  --muted: #6C757D;      /* new -> Muted (de-emphasized borders/text) */
+  --frame: 4px;
+  --shadow-offset: 10px;
+}
+
+/* ======================================================
+   HERO SECTION — POSTER WALL GROUND
+====================================================== */
+
+.hero {
+  position: relative;
+  background: var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(27,67,50,0.06) 39px, rgba(27,67,50,0.06) 40px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top: var(--frame) solid var(--ink);
+  border-bottom: var(--frame) solid var(--ink);
+}
+ /* .hero {
+  position: relative;
+  background: var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(27,67,50,0.06) 39px, rgba(27,67,50,0.06) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(27,67,50,0.06) 39px, rgba(27,67,50,0.06) 40px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top: var(--frame) solid var(--ink);
+  border-bottom: var(--frame) solid var(--ink);
+} */
+
+
+/* ======================================================
+   BADGE — STAMPED PERMIT TAG
+====================================================== */
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  background: var(--warn);
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--ink);
+  margin: 24px 0 0 24px;
+  align-self: flex-start;
+  transform: rotate(-1.2deg);
+  opacity: 0;
+  animation: heroLineIn 0.4s steps(4) 0.1s forwards;
+}
+
+.hero__badge-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 0;
+  background: var(--alert);
+  flex-shrink: 0;
+  animation: pulse 1s steps(2) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+/* ======================================================
+   TEXT BLOCK — EDITORIAL LEDGER COLUMN
+====================================================== */
+
+.hero__text-block {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1280px;
+  text-align: left;
+  padding: 1.5rem 2.5rem 0;
+  margin: 0 auto;
+  border-left: var(--frame) solid var(--ink);
+  border-right: var(--frame) solid var(--ink);
+}
+
+.hero__heading {
+  font-family: "Space Grotesk", "Impact", sans-serif;
+  font-weight: 900;
+  font-size: clamp(3.2rem, 8vw, 7.5rem);
+  line-height: 0.92;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ======================================================
+   HIGHLIGHTS — TORN TAPE / STAMP MARKS
+====================================================== */
+
+.hero__highlight {
+  position: relative;
+  display: inline-block;
+}
+
+.hero__highlight--underline {
+  position: relative;
+  display: inline-block;
+}
+
+.hero__highlight--underline::after { display: none; }
+
+.hero__underline-svg {
+  position: absolute;
+  left: -4%;
+  bottom: -1.25rem;
+  width: 108%;
+  height: clamp(1.5rem, 2.5vw, 2.25rem);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.hero__highlight--pink::before {
+  content: "";
+  position: absolute;
+  left: 48%;
+  top: 4%;
+  width: 56%;
+  height: 92%;
+  background: var(--alert);
+  border-radius: 0;
+  z-index: -1;
+  transform: rotate(-1deg) skew(-2deg);
+  border: 2px solid var(--ink);
+}
+
+.hero__highlight--green {
+  background: var(--warn);
+  color: var(--ink);
+  padding: 0.05em 0.4em;
+  border-radius: 0;
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0px var(--ink);
+  display: inline-block;
+  transform: rotate(-0.6deg);
+}
+
+/* ======================================================
+   SUBTEXT — TYPEWRITER DISPATCH
+====================================================== */
+
+.hero__subtext {
+  margin-top: 1.75rem;
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 560px;
+  margin-left: 0;
+  margin-right: auto;
+  border-left: 3px solid var(--alert);
+  padding-left: 1rem;
+}
+
+/* ======================================================
+   CTA ROW — STAMPED CONTROL SWITCHES
+====================================================== */
+
+.hero__cta-row {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-start;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: heroLineIn 0.4s steps(4) 0.85s forwards;
+}
+
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 30px;
+  border-radius: 0;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: 3px solid var(--ink);
+  transition: transform 80ms steps(2), box-shadow 80ms steps(2);
+  cursor: pointer;
+}
+
+.hero__btn--primary {
+  background: var(--alert);
+  color: var(--surface);
+  box-shadow: 6px 6px 0px var(--ink);
+}
+
+.hero__btn--primary:hover {
+  background: var(--ink);
+  color: var(--warn);
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px var(--secondary);
+}
+
+.hero__btn--primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--ink);
+}
+
+.hero__btn--ghost {
+  background: var(--surface);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  box-shadow: 6px 6px 0px transparent;
+}
+
+.hero__btn--ghost:hover {
+  background: var(--ink);
+  color: var(--surface);
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px var(--warn);
+}
+
+.hero__btn--ghost:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px transparent;
+}
+
+/* ======================================================
+   SQUIGGLE — REDACTION MARK
+====================================================== */
+
+.hero__squiggle {
+  position: absolute;
+  right: 40px;
+  top: 30px;
+  width: 280px;
+  height: 180px;
+  opacity: 1;
+  z-index: 1;
+  pointer-events: none;
+  filter: grayscale(1) contrast(1.4);
+  mix-blend-mode: multiply;
+}
+
+/* ======================================================
+   ACCENT BLOCK — HAZARD MARKER
+====================================================== */
+
+.hero__accent-saffron {
+  position: absolute;
+  top: 14%;
+  right: 8%;
+  width: 64px;
+  height: 130px;
+  background: var(--alert);
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  transform: rotate(8deg);
+  z-index: 0;
+  opacity: 1;
+  box-shadow: 7px 7px 0px var(--ink);
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--alert),
+    var(--alert) 10px,
+    var(--ink) 10px,
+    var(--ink) 12px
+  );
+}
+
+/* ======================================================
+   IMAGE / DOCUMENTARY STRIP — INDEX GRID OF EVIDENCE
+====================================================== */
+
+.hero__circles-strip {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: 130px;
+  gap: 0;
+  padding: 0 2.5rem 3rem;
+  border-top: var(--frame) solid var(--ink);
+}
+
+/* ======================================================
+   IMAGE FRAMES — RAW DOCUMENTARY EVIDENCE
+====================================================== */
+
+.circle {
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  background: var(--surface);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: var(--frame) solid var(--ink);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--ink);
+  filter: grayscale(0.85) contrast(1.15) sepia(0.08);
+  transition: filter 120ms steps(3), transform 120ms steps(3), box-shadow 120ms steps(3);
+}
+
+.circle::after {
+  content: "EXHIBIT";
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--surface);
+  background: var(--ink);
+  padding: 2px 6px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.circle:hover {
+  filter: grayscale(0) contrast(1.05) sepia(0);
+  transform: translate(-4px, -4px);
+  box-shadow: calc(var(--shadow-offset) + 4px) calc(var(--shadow-offset) + 4px) 0px var(--alert);
+  z-index: 10;
+}
+
+/* asymmetrical, rotated, overlapping editorial placement replacing soft pill circles */
+
+.circle--bottom-left-1  {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+  transform: rotate(-1.5deg);
+  margin-top: -10px;
+}
+.circle--bottom-left-2  {
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 1;
+  transform: rotate(1deg);
+  margin-left: -6px;
+}
+.circle--bottom-center-1 {
+  grid-column: 2 / span 2;
+  grid-row: 3 / span 2;
+  transform: rotate(0.8deg);
+  z-index: 2;
+  margin-top: -14px;
+}
+.circle--bottom-center-2 {
+  grid-column: 4 / span 1;
+  grid-row: 1 / span 1;
+  transform: rotate(-2deg);
+}
+.circle--bottom-mid-1   {
+  grid-column: 4 / span 2;
+  grid-row: 2 / span 2;
+  transform: rotate(1.4deg);
+  margin-left: -8px;
+}
+.circle--bottom-mid-2   {
+  grid-column: 6 / span 1;
+  grid-row: 1 / span 1;
+  transform: rotate(-1deg);
+}
+.circle--bottom-right-1 {
+  grid-column: 6 / span 2;
+  grid-row: 2 / span 2;
+  transform: rotate(0.6deg);
+  margin-top: -8px;
+}
+.circle--bottom-right-2 {
+  grid-column: 8 / span 1;
+  grid-row: 1 / span 2;
+  transform: rotate(-1.8deg);
+  margin-right: -10px;
+}
+
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 1024px) {
+  .hero__heading {
+    font-size: clamp(2.6rem, 8vw, 5rem);
+    letter-spacing: -2px;
+  }
+  .hero__accent-saffron {
+    width: clamp(2.5rem, 5vw, 3.5rem);
+    height: clamp(4.5rem, 8vw, 6rem);
+    top: 12%;
+    right: clamp(4%, 6vw, 10%);
+  }
+  .hero__squiggle { display: none; }
+
+  .hero__circles-strip {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 140px;
+    padding: 0 1.5rem 2.5rem;
+  }
+
+  .circle--bottom-left-1  { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+  .circle--bottom-left-2  { grid-column: 3 / span 1; grid-row: 1 / span 1; }
+  .circle--bottom-center-1 { grid-column: 3 / span 2; grid-row: 2 / span 2; }
+  .circle--bottom-center-2 { grid-column: 4 / span 1; grid-row: 1 / span 1; }
+  .circle--bottom-mid-1   { grid-column: 1 / span 2; grid-row: 3 / span 2; }
+  .circle--bottom-mid-2   { grid-column: 3 / span 1; grid-row: 5 / span 1; }
+  .circle--bottom-right-1 { grid-column: 1 / span 2; grid-row: 5 / span 2; }
+  .circle--bottom-right-2 { grid-column: 3 / span 2; grid-row: 4 / span 1; }
+
+  .hero__underline-svg { left: -3%; width: 104%; bottom: -1.1rem; }
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 768px) {
+  .hero { padding-top: 0; }
+
+  .hero__text-block {
+    padding: 1rem clamp(1rem, 4vw, 1.5rem) 0;
+    overflow-x: clip;
+  }
+  .hero__heading {
+    font-size: clamp(2.1rem, 11vw, 3.2rem);
+    line-height: 1.0;
+    letter-spacing: -1.5px;
+  }
+  .hero__subtext { font-size: 0.88rem; }
+  .hero__subtext br { display: none; }
+
+  .hero__accent-saffron {
+    width: clamp(2.25rem, 8vw, 2.75rem);
+    height: clamp(3.5rem, 10vw, 4.25rem);
+    top: 8%;
+    right: clamp(2%, 4vw, 6%);
+  }
+  .hero__underline-svg {
+    left: -2%;
+    width: 102%;
+    bottom: -1rem;
+    height: 1.4rem;
+  }
+
+  .hero__circles-strip {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 150px;
+    gap: 0;
+    padding: 0 1rem 2rem;
+  }
+
+  .circle,
+  .circle--bottom-left-1,
+  .circle--bottom-left-2,
+  .circle--bottom-center-1,
+  .circle--bottom-center-2,
+  .circle--bottom-mid-1,
+  .circle--bottom-mid-2,
+  .circle--bottom-right-1,
+  .circle--bottom-right-2 {
+    grid-column: auto;
+    grid-row: auto;
+    margin: 0;
+    transform: none;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__heading { font-size: 1.85rem; }
+  .hero__circles-strip { grid-auto-rows: 130px; }
+}
+
+/* ======================================================
+   ANIMATIONS — MECHANICAL, STEPPED, TACTICAL
+====================================================== */
+
+.hero__line {
+  display: inline;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: heroLineIn 0.35s steps(5) forwards;
+}
+
+@keyframes heroLineIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero__underline-path {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: drawUnderline 0.6s steps(12) 0.55s forwards;
+}
+
+@keyframes drawUnderline {
+  to { stroke-dashoffset: 0; }
+}
+
+.hero__underline-svg {
+  animation: underlineDrift 1.6s steps(4) 1.2s infinite alternate;
+}
+
+@keyframes underlineDrift {
+  0%   { transform: translateY(0px); }
+  100% { transform: translateY(-3px); }
+}
+
+.circle {
+  animation: none;
+}
+
+.hero__accent-saffron {
+  animation: blobRotate 2.4s steps(6) infinite alternate;
+  transform-origin: center center;
+}
+
+@keyframes blobRotate {
+  0%   { transform: rotate(8deg); }
+  50%  { transform: rotate(14deg) scale(1.02); }
+  100% { transform: rotate(4deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__line,
+  .hero__underline-path,
+  .hero__underline-svg,
+  .circle,
+  .hero__accent-saffron,
+  .hero__badge,
+  .hero__cta-row {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}

@@ -1,0 +1,582 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+/* ============================================================
+   NGO BRUTALIST EDITORIAL SYSTEM
+   Raw documentary imagery. Hard geometry. No soft corners.
+   ============================================================ */
+:root {
+  --clr-primary: #2D6A4F;
+  --clr-secondary: #40916C;
+  --clr-accent: #F4A261;
+  --clr-bg: #F8F9FA;
+  --clr-surface: #FFFFFF;
+  --clr-text: #1B4332;
+  --clr-muted: #6C757D;
+  --clr-ink: #0A0A0A;
+
+  --font-display: 'Space Grotesk', 'Impact', sans-serif;
+  --font-body:    'Space Mono', 'Courier New', monospace;
+
+  --hard-shadow: 10px 10px 0px var(--clr-ink);
+  --hard-shadow-sm: 6px 6px 0px var(--clr-ink);
+  --hard-border: 4px solid var(--clr-ink);
+}
+
+/* ---------- Mechanical Step Keyframes (replaces smooth float) ---------- */
+@keyframes testi-float {
+  0%   { transform: translateY(0) rotate(var(--tilt, -1deg)); }
+  25%  { transform: translateY(-3px) rotate(var(--tilt, -1deg)); }
+  50%  { transform: translateY(-6px) rotate(var(--tilt, -1deg)); }
+  75%  { transform: translateY(-3px) rotate(var(--tilt, -1deg)); }
+  100% { transform: translateY(0) rotate(var(--tilt, -1deg)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials__avatar { animation: none !important; }
+}
+
+/* ============================================================
+   SECTION SHELL — Industrial poster wall, not a centered hero
+   ============================================================ */
+.testimonials {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 90vh;
+  background: var(--clr-bg);
+  background-image:
+    linear-gradient(var(--clr-ink) 1px, transparent 1px),
+    linear-gradient(90deg, var(--clr-ink) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: -1px -1px; 
+      position: relative;
+  padding: 7rem 0 8rem;
+  overflow: hidden;
+  background: var(--bg);
+  background-image:
+    linear-gradient(var(--ink) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ink) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: -1px -1px;
+  background-color: var(--clr-bg);
+  overflow: hidden;
+  padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 3rem);
+  box-sizing: border-box;
+  border-top: var(--hard-border);
+  border-bottom: var(--hard-border); 
+ 
+ 
+}
+
+/* Faint grid opacity trick via pseudo-element so lines stay subtle */
+.testimonials::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--clr-bg);
+  opacity: 0.94;
+  z-index: 0;
+}
+
+/* ---------- Inner Asymmetrical Ledger ---------- */
+.testimonials__inner {
+  position: relative;
+  z-index: 2;
+  width: min(96%, 980px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(2rem, 5vh, 3rem);
+  transform: rotate(-0.3deg);
+}
+
+/* ============================================================
+   IMPACT STATS — Industrial index grid, not soft metric cards
+   ============================================================ */
+.testimonials__stats {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  border: var(--hard-border);
+  background: var(--clr-surface);
+  box-shadow: var(--hard-shadow);
+  width: fit-content;
+}
+
+.testimonials__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 1.25rem 2rem;
+  border-right: var(--hard-border);
+  position: relative;
+}
+
+.testimonials__stat:last-child {
+  border-right: none;
+}
+
+.testimonials__stat::before {
+  content: "[" counter(stat-index, decimal-leading-zero) "]";
+  counter-increment: stat-index;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  color: var(--clr-accent);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.1em;
+}
+
+.testimonials__stats {
+  counter-reset: stat-index;
+}
+
+.testimonials__stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 800;
+  color: var(--clr-ink);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.testimonials__stat-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.65rem, 1vw, 0.75rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--clr-primary);
+  margin-top: 0.4rem;
+  border-top: 2px solid var(--clr-primary);
+  padding-top: 0.3rem;
+}
+
+/* ============================================================
+   HEADING — Heavy display block, smashed against the grid
+   ============================================================ */
+.testimonials__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--clr-ink);
+  margin: 0;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+}
+
+.testimonials__pill {
+  display: inline-block;
+  background: var(--clr-accent);
+  border-radius: 0;
+  border: 3px solid var(--clr-ink);
+  padding: 0.05em 0.3em;
+  color: var(--clr-ink);
+  font-weight: 800;
+  transform: rotate(-1.5deg);
+  box-shadow: 4px 4px 0px var(--clr-ink);
+}
+
+.testimonials__heading-plain {
+  color: var(--clr-ink);
+}
+
+/* Restore underline marks as raw structural strikes, not doodles */
+.testimonials__underline-svg {
+  display: block !important;
+  width: 100%;
+  height: 10px;
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   CARD — Documentary dispatch block, hard frame, flat shadow
+   ============================================================ */
+.testimonials__card {
+  position: relative;
+  background: var(--clr-surface);
+  border-radius: 0;
+  border: var(--hard-border);
+  padding: clamp(2.5rem, 5vw, 3.5rem) clamp(2rem, 5vw, 3.5rem);
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  box-shadow: var(--hard-shadow);
+  transform: rotate(0.4deg);
+}
+
+.testimonials__quote {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 9vw, 8rem);
+  line-height: 1;
+  color: var(--clr-accent);
+  opacity: 0.18;
+  user-select: none;
+  position: absolute;
+  font-weight: 800;
+}
+.testimonials__quote--open  { top: -1rem; left: clamp(0.5rem, 2vw, 1.5rem); }
+.testimonials__quote--close { bottom: clamp(1.5rem, 4vh, 3rem); right: clamp(0.5rem, 2vw, 1.5rem); }
+
+.testimonials__text {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--clr-text);
+  margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+  max-width: 58ch;
+  position: relative;
+  z-index: 2;
+  border-left: 4px solid var(--clr-primary);
+  padding-left: 1.25rem;
+}
+
+.testimonials__author {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  border-top: 2px dashed var(--clr-ink);
+  padding-top: 1rem;
+}
+.testimonials__author-img {
+  width: clamp(2.75rem, 4vw, 3.5rem);
+  height: clamp(2.75rem, 4vw, 3.5rem);
+  border-radius: 0;
+  object-fit: cover;
+  border: 3px solid var(--clr-ink);
+  filter: grayscale(0.85) contrast(1.1);
+  transition: filter 120ms steps(3);
+}
+.testimonials__author-img:hover {
+  filter: grayscale(0) contrast(1);
+}
+.testimonials__author-name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--clr-ink);
+}
+.testimonials__author-role {
+  display: block;
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 1vw, 0.8rem);
+  color: var(--clr-muted);
+  margin-top: 0.2em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   DOTS — Mechanical toggles, not soft pills
+   ============================================================ */
+.testimonials__dots {
+  display: flex;
+  gap: 0;
+  justify-content: flex-start;
+  border: 3px solid var(--clr-ink);
+  width: fit-content;
+}
+.testimonials__dot {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0;
+  border: none;
+  border-right: 3px solid var(--clr-ink);
+  background: var(--clr-surface);
+  cursor: pointer;
+  padding: 0;
+  transition: background 80ms steps(2);
+}
+.testimonials__dot:last-child {
+  border-right: none;
+}
+.testimonials__dot--active {
+  background: var(--clr-accent);
+  transform: none;
+}
+
+/* ============================================================
+   COMMUNITY WALL — Documentary photo grid, hard frames,
+   duotone-to-color reveal, asymmetrical poster placement
+   ============================================================ */
+.testimonials__avatar {
+  position: absolute;
+  z-index: 1;
+  border-radius: 0;
+  overflow: hidden;
+  border: var(--hard-border);
+  box-shadow: var(--hard-shadow-sm);
+  animation: testi-float var(--float-duration, 6s) steps(8, end) var(--float-delay, 0s) infinite;
+  transition: transform 140ms steps(4), box-shadow 140ms steps(4);
+}
+
+.testimonials__avatar:hover {
+  transform: scale(1.04) rotate(0deg) !important;
+  box-shadow: 14px 14px 0px var(--clr-ink);
+  z-index: 5;
+}
+
+.testimonials__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(0.9) sepia(0.15) contrast(1.15);
+  mix-blend-mode: normal;
+  transition: filter 160ms steps(4);
+}
+
+.testimonials__avatar:hover img {
+  filter: grayscale(0) sepia(0) contrast(1);
+}
+
+/* Duotone overlay using primary color, fades out on hover */
+.testimonials__avatar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--clr-primary);
+  mix-blend-mode: color;
+  opacity: 0.55;
+  transition: opacity 160ms steps(4);
+  pointer-events: none;
+}
+.testimonials__avatar:hover::after {
+  opacity: 0;
+}
+
+/* --- LEFT PORTRAITS: torn-poster asymmetry, sharp rectangles, not circles --- */
+.testimonials__avatar--tl {
+  --tilt: -3deg;
+  width:  clamp(6rem, 9vw, 9.5rem);
+  height: clamp(8rem, 12vw, 12.5rem);
+  left:   clamp(0.5rem, 4vw, 5rem);
+  top: 6%;
+  transform: rotate(-3deg);
+}
+
+.testimonials__avatar--ml {
+  --tilt: 2deg;
+  width:  clamp(4rem, 5vw, 5.5rem);
+  height: clamp(4rem, 5vw, 5.5rem);
+  left:   clamp(0.25rem, 2vw, 2rem);
+  top: 42%;
+  transform: rotate(2deg);
+}
+
+.testimonials__avatar--bl {
+  --tilt: -2deg;
+  width:  clamp(7rem, 11vw, 11.5rem);
+  height: clamp(9rem, 14vw, 14.5rem);
+  left:   clamp(0.5rem, 3.5vw, 2.5rem);
+  bottom: 4%;
+  transform: rotate(-2deg);
+}
+
+/* --- RIGHT PORTRAITS --- */
+.testimonials__avatar--tr {
+  --tilt: 3deg;
+  width:  clamp(6.5rem, 9.5vw, 10rem);
+  height: clamp(5rem, 7vw, 7.5rem);
+  right:  clamp(0.5rem, 4vw, 5rem);
+  top: 8%;
+  transform: rotate(3deg);
+}
+
+.testimonials__avatar--mr1 {
+  --tilt: -2deg;
+  width:  clamp(3.25rem, 4.5vw, 4.5rem);
+  height: clamp(3.25rem, 4.5vw, 4.5rem);
+  right:  clamp(1.5rem, 11vw, 11.5rem);
+  top: 36%;
+  transform: rotate(-2deg);
+}
+
+.testimonials__avatar--mr2 {
+  --tilt: 4deg;
+  width:  clamp(4.25rem, 6vw, 6rem);
+  height: clamp(4.25rem, 6vw, 6rem);
+  right:  clamp(0.25rem, 2vw, 2rem);
+  top: 44%;
+  transform: rotate(4deg);
+}
+
+.testimonials__avatar--br {
+  --tilt: -3deg;
+  width:  clamp(7.5rem, 12vw, 12.5rem);
+  height: clamp(9.5rem, 15vw, 15.5rem);
+  right:  clamp(0.5rem, 3.5vw, 2rem);
+  bottom: 4%;
+  transform: rotate(-3deg);
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (≤900px)
+   ============================================================ */
+@media (max-width: 900px) {
+  .testimonials {
+    min-height: auto;
+    padding: 4rem 1.25rem;
+    background-size: 32px 32px;
+  }
+
+  .testimonials__avatar--tl {
+    left: 0.75rem;
+    top: 2%;
+    width: 5rem;
+    height: 6.5rem;
+  }
+
+  .testimonials__avatar--tr {
+    right: 0.75rem;
+    top: 2%;
+    width: 5rem;
+    height: 4.5rem;
+  }
+
+  .testimonials__avatar--ml,
+  .testimonials__avatar--bl,
+  .testimonials__avatar--mr1,
+  .testimonials__avatar--mr2 {
+    display: none;
+  }
+
+  .testimonials__avatar--br {
+    width: 4.5rem;
+    height: 5.5rem;
+    right: 0.75rem;
+    bottom: 2%;
+  }
+
+  .testi-bubble {
+    max-width: min(190px, 40vw);
+    font-size: 0.65rem;
+  }
+
+  .testimonials__stats {
+    flex-wrap: wrap;
+  }
+
+  .testimonials__stat {
+    border-bottom: 4px solid var(--clr-ink);
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (≤600px)
+   ============================================================ */
+@media (max-width: 600px) {
+  .testimonials {
+    padding: 3rem 1rem;
+    border-left: var(--hard-border);
+    border-right: var(--hard-border);
+  }
+
+  .testimonials__avatar { display: none; }
+
+  .testimonials__heading {
+    font-size: clamp(2rem, 7.5vw, 2.5rem);
+    max-width: 100%;
+  }
+
+  .testimonials__inner {
+    transform: rotate(0deg);
+  }
+
+  .testimonials__card {
+    padding: 2rem 1.25rem;
+    border-radius: 0;
+    transform: rotate(0deg);
+    box-shadow: var(--hard-shadow-sm);
+  }
+
+  .testimonials__quote--open  { top: 0.25rem; left: 0.5rem; }
+  .testimonials__quote--close { bottom: 4rem; right: 0.5rem; }
+
+  .testimonials__stats {
+    gap: 0;
+    width: 100%;
+  }
+
+  .testimonials__stat {
+    flex: 1 1 50%;
+    padding: 1rem;
+  }
+}
+
+/* ============================================================
+   BENEFICIARY OPINION BUBBLES — Raw dispatch tags, not soft chat UI
+   ============================================================ */
+.testimonials__avatar--bubble-active {
+  transform: scale(1.06) !important;
+  box-shadow: 14px 14px 0px var(--clr-ink);
+  z-index: 6;
+}
+
+.testi-bubble {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: max-content;
+  max-width: 230px;
+  padding: 0.6rem 0.85rem;
+  border-radius: 0;
+  background: var(--clr-surface);
+  border: 3px solid var(--clr-ink);
+  box-shadow: 6px 6px 0px var(--clr-ink);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--clr-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  white-space: normal;
+  text-align: left;
+}
+
+.testi-bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 24px;
+  transform: none;
+  width: 0;
+  height: 0;
+  border: 7px solid transparent;
+  border-top-color: var(--clr-ink);
+  border-bottom: none;
+}
+
+.testi-bubble--in {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) rotate(-1deg);
+  transition: opacity 90ms steps(3), transform 90ms steps(3);
+}
+
+.testi-bubble--out {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-10px) rotate(-1deg);
+  transition: opacity 90ms steps(3), transform 90ms steps(3);
+}
+
+@media (max-width: 600px) {
+  .testi-bubble { display: none; }
+}

@@ -1,0 +1,519 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+/* ═══════════════════════════════════════════════════════
+   NGO BRUTALIST TOKENS — RAW DOCUMENTARY SYSTEM
+   No pills. No soft shadows. No corporate polish.
+═══════════════════════════════════════════════════════ */
+:root {
+  --clr-primary: #2D6A4F;
+  --clr-secondary: #40916C;
+  --clr-accent: #F4A261;
+  --clr-bg: #F8F9FA;
+  --clr-surface: #FFFFFF;
+  --clr-text: #1B4332;
+  --clr-muted: #6C757D;
+  --clr-ink: #0A0A0A;
+
+  --font-display: 'Space Grotesk', 'Impact', sans-serif;
+  --font-body: 'Space Mono', 'Courier New', monospace;
+
+  --container-w: min(94%, 1320px);
+
+  --frame: 4px solid var(--clr-ink);
+  --shadow-hard: 10px 10px 0px var(--clr-ink);
+  --shadow-hard-sm: 6px 6px 0px var(--clr-ink);
+  --shadow-hard-accent: 10px 10px 0px var(--clr-accent);
+
+  --step-fast: steps(4, end);
+  --step-snap: steps(2, jump-end);
+}
+
+/* ─── Section wrapper: torn industrial ground ─── */
+.services {
+  position: relative;
+  background: var(--clr-bg);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(27,67,50,0.06) 39px, rgba(27,67,50,0.06) 70px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(27,67,50,0.06) 39px, rgba(27,67,50,0.06) 7px);
+ 
+  padding-block: clamp(4rem, 10vw, 9rem);
+  overflow: hidden;
+  border-top: 8px solid var(--clr-ink);
+  border-bottom: 8px solid var(--clr-ink);
+
+}
+
+/* ─── Diagonal field marker / structural decoration ─── */
+.services__red-curve {
+  display: block !important;
+  position: absolute;
+  top: -6%;
+  right: -8%;
+  width: 60vw;
+  height: 60vw;
+  max-width: 900px;
+  max-height: 900px;
+  background: transparent;
+  border: var(--frame);
+  transform: rotate(8deg);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.services__container {
+  width: var(--container-w);
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════════════
+   HEADER — POSTER WALL TYPE
+═══════════════════════════════════════ */
+.services__header {
+  margin-bottom: clamp(3.5rem, 7vw, 6rem);
+  max-width: 920px;
+  position: relative;
+  transform: rotate(-0.6deg);
+}
+
+.services__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-surface);
+  background: var(--clr-ink);
+  padding: 0.4em 0.9em;
+  margin-bottom: 1.5rem;
+  border: 2px solid var(--clr-ink);
+}
+
+.services__eyebrow::before {
+  content: "// ";
+  color: var(--clr-accent);
+}
+
+.services__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--clr-ink);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05em;
+}
+
+.services__heading-line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.2em;
+  position: relative;
+}
+
+/* Highlighted text: hard-edged ink block, not a pill */
+.services__pill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--clr-accent);
+  border: 3px solid var(--clr-ink);
+  border-radius: 0;
+  padding: 0.05em 0.3em;
+  color: var(--clr-ink);
+  font-style: normal;
+  font-weight: 800;
+  font-size: 0.92em;
+  transform: rotate(-1.5deg);
+  transition: transform 0.12s var(--step-snap), background 0.12s var(--step-snap), color 0.12s var(--step-snap);
+}
+
+.services__pill:hover {
+  transform: rotate(1.5deg) translate(-3px, -3px);
+  background: var(--clr-ink);
+  color: var(--clr-accent);
+}
+
+/* Underline mark: scrawled tactical line instead of soft svg */
+.services__underline-svg {
+  display: block !important;
+  position: relative;
+  height: 0.18em;
+  width: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--clr-ink) 0px,
+    var(--clr-ink) 14px,
+    transparent 14px,
+    transparent 20px
+  );
+  margin-top: 0.15em;
+}
+
+/* ═══════════════════════════════════════
+   PROGRAMS / INITIATIVES — INDUSTRIAL INDEX
+═══════════════════════════════════════ */
+.services__list {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: var(--frame);
+}
+
+/* ─── Each row: a ledger line, not a soft card ─── */
+.services__row {
+  display: grid;
+  grid-template-columns: clamp(8rem, 14vw, 12rem) 1fr auto;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding: clamp(1.75rem, 3vw, 2.75rem) clamp(1rem, 2vw, 1.5rem);
+  background: var(--clr-surface);
+  border-radius: 0;
+  border-bottom: var(--frame);
+  border-left: 0px solid var(--clr-ink);
+  position: relative;
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.3s var(--step-fast) var(--delay, 0s),
+    transform 0.3s var(--step-fast) var(--delay, 0s),
+    border-left-width 0.15s var(--step-snap),
+    background 0.15s var(--step-snap),
+    box-shadow 0.15s var(--step-snap);
+}
+
+.services__row--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tactical mechanical hover: thick ink bar slams in from the left */
+.services__row:hover {
+  border-left-width: 14px;
+  background: var(--clr-bg);
+  box-shadow: inset 0 0 0 2px var(--clr-ink);
+}
+
+/* Row index counter — raw metadata, printed like a manifest number */
+.services__row::before {
+  counter-increment: row-index;
+  content: counter(row-index, decimal-leading-zero);
+  position: absolute;
+  top: 0.6rem;
+  right: 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--clr-muted);
+  letter-spacing: 0.1em;
+}
+
+.services__list {
+  counter-reset: row-index;
+}
+
+.services__row::after {
+  display: none;
+}
+
+/* ─── Left column: structural metadata tag ─── */
+.services__row-left {
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid var(--clr-ink);
+  padding-right: clamp(1rem, 2vw, 1.5rem);
+}
+
+.services__row-desc {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--clr-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.services__row-desc::before {
+  content: "[ ";
+  color: var(--clr-ink);
+}
+
+.services__row-desc::after {
+  content: " ]";
+  color: var(--clr-ink);
+}
+
+/* ─── Center + Right ─── */
+.services__row-right {
+  display: contents;
+}
+
+.services__row-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 2.25rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--clr-ink);
+  line-height: 1.15;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Arrow indicator: blunt mechanical glyph, snaps on hover, no easing */
+.services__row-arrow {
+  font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+  color: var(--clr-ink);
+  transition: transform 0.12s var(--step-snap);
+  flex-shrink: 0;
+  font-family: var(--font-body);
+}
+
+.services__row:hover .services__row-arrow {
+  transform: translateX(10px);
+  color: var(--clr-accent);
+}
+
+/* Status dot transformed into a hard-edged stamp/seal */
+.services__collage {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--clr-accent);
+  border: 2px solid var(--clr-ink);
+  transform: rotate(45deg);
+}
+
+.services__collage-inner,
+.services__collage-seg {
+  display: none !important;
+}
+
+/* ═══════════════════════════════════════
+   DOCUMENTARY IMAGE ARCHITECTURE
+   (apply to any .services__img / figure markup)
+═══════════════════════════════════════ */
+.services__img-frame {
+  position: relative;
+  border: var(--frame);
+  border-radius: 0;
+  box-shadow: var(--shadow-hard);
+  overflow: hidden;
+  background: var(--clr-ink);
+  transition: box-shadow 0.15s var(--step-snap), transform 0.15s var(--step-snap);
+}
+
+.services__img-frame:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 14px 14px 0px var(--clr-ink);
+}
+
+.services__img-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.85) contrast(1.15) sepia(0.08);
+  mix-blend-mode: normal;
+  transition: filter 0.4s var(--step-fast);
+}
+
+.services__img-frame:hover img {
+  filter: grayscale(0) contrast(1.05) sepia(0);
+}
+
+/* Vertical split-pane variant for towering documentary crops */
+.services__img-frame--tall {
+  aspect-ratio: 3 / 4;
+}
+
+.services__img-frame--wide {
+  aspect-ratio: 16 / 7;
+}
+
+/* Caption strip: printed exhibit label under the frame */
+.services__img-caption {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clr-ink);
+  background: var(--clr-accent);
+  padding: 0.35rem 0.6rem;
+  margin-top: -4px;
+  border: 2px solid var(--clr-ink);
+  display: inline-block;
+}
+
+/* ═══════════════════════════════════════
+   CTA STRIP — INK SLAB
+═══════════════════════════════════════ */
+.services__cta {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  padding: clamp(2.25rem, 4.5vw, 3.5rem);
+  background: var(--clr-ink);
+  border: var(--frame);
+  border-radius: 0;
+  box-shadow: var(--shadow-hard-accent);
+  transform: rotate(0.4deg);
+}
+
+.services__cta-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  color: var(--clr-surface);
+  margin: 0;
+  font-weight: 400;
+  max-width: 50ch;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.services__cta-text::before {
+  content: "> ";
+  color: var(--clr-accent);
+  font-weight: 700;
+}
+
+.services__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 16px 36px;
+  background: var(--clr-accent);
+  color: var(--clr-ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 3px solid var(--clr-surface);
+  border-radius: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 6px 6px 0px var(--clr-surface);
+  transition: transform 0.12s var(--step-snap), box-shadow 0.12s var(--step-snap), background 0.12s var(--step-snap);
+}
+
+.services__cta-btn::after {
+  content: "→";
+}
+
+.services__cta-btn:hover {
+  background: var(--clr-surface);
+  color: var(--clr-ink);
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0px var(--clr-surface);
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — TABLET
+═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .services__row {
+    grid-template-columns: clamp(7rem, 13vw, 9.5rem) 1fr auto;
+    gap: 1.5rem;
+  }
+
+  .services__row-left {
+    padding-right: 1rem;
+  }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — MOBILE
+═══════════════════════════════════════ */
+@media (max-width: 767px) {
+  .services {
+    padding-block: 4rem;
+    border-top-width: 6px;
+    border-bottom-width: 6px;
+  }
+
+  .services__header {
+    transform: none;
+  }
+
+  .services__list {
+    gap: 0;
+  }
+
+  .services__row {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .services__row-left {
+    grid-column: 1 / -1;
+    border-right: none;
+    border-bottom: 2px dashed var(--clr-ink);
+    padding-right: 0;
+    padding-bottom: 0.75rem;
+  }
+
+  .services__row-right {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    grid-column: 1 / -1;
+  }
+
+  .services__row:hover {
+    border-left-width: 8px;
+  }
+
+  .services__cta {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 2rem 1.25rem;
+    transform: none;
+  }
+
+  .services__cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .services__img-frame:hover {
+    transform: none;
+    box-shadow: var(--shadow-hard);
+  }
+}
+
+@media (max-width: 480px) {
+  .services__row-arrow {
+    display: none;
+  }
+
+  .services__row::before {
+    position: static;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+}
